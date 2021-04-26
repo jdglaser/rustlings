@@ -747,6 +747,7 @@
       "contributions": [
         "code"
       ]
+<<<<<<< HEAD
     },
     {
       "login": "hpwxf",
@@ -847,6 +848,8 @@
       "contributions": [
         "content"
       ]
+=======
+>>>>>>> f105bb5103061ab72e33edfea5100259b400bf3f
     }
   ],
   "contributorsPerLine": 8,

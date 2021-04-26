@@ -138,6 +138,7 @@ fn main() {
     let exercises = toml::from_str::<ExerciseList>(toml_str).unwrap().exercises;
     let verbose = args.nocapture;
 
+<<<<<<< HEAD
     let command = args.nested.unwrap_or_else(|| {
         let text = fs::read_to_string("default_out.txt").unwrap();
         println!("{}", text);
@@ -159,6 +160,31 @@ fn main() {
                 let status = if e.looks_done() {
                     exercises_done += 1;
                     "Done"
+=======
+    // Handle the list command
+    if let Some(list_m) = matches.subcommand_matches("list") {
+        if ["paths", "names"].iter().all(|k| !list_m.is_present(k)) {
+            println!("{:<17}\t{:<46}\t{:<7}", "Name", "Path", "Status");
+        }
+        let filters = list_m.value_of("filter").unwrap_or_default().to_lowercase();
+        exercises.iter().for_each(|e| {
+            let fname = format!("{}", e.path.display());
+            let filter_cond = filters
+                .split(',')
+                .filter(|f| !f.trim().is_empty())
+                .any(|f| e.name.contains(&f) || fname.contains(&f));
+            let status = if e.looks_done() { "Done" } else { "Pending" };
+            let solve_cond = {
+                (e.looks_done() && list_m.is_present("solved"))
+                    || (!e.looks_done() && list_m.is_present("unsolved"))
+                    || (!list_m.is_present("solved") && !list_m.is_present("unsolved"))
+            };
+            if solve_cond && (filter_cond || !list_m.is_present("filter")) {
+                let line = if list_m.is_present("paths") {
+                    format!("{}\n", fname)
+                } else if list_m.is_present("names") {
+                    format!("{}\n", e.name)
+>>>>>>> f105bb5103061ab72e33edfea5100259b400bf3f
                 } else {
                     "Pending"
                 };
@@ -226,8 +252,13 @@ fn main() {
                 std::process::exit(1);
             }
             println!(
+<<<<<<< HEAD
                 "{emoji} All exercises completed! {emoji}",
                 emoji = Emoji("🎉", "★")
+=======
+                "Error: Could not watch your progress. Error message was {:?}.",
+                e
+>>>>>>> f105bb5103061ab72e33edfea5100259b400bf3f
             );
             println!();
             println!("+----------------------------------------------------+");

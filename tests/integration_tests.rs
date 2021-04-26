@@ -131,6 +131,7 @@ fn all_exercises_require_confirmation() {
             file.read_to_string(&mut s).unwrap();
             s
         };
+<<<<<<< HEAD
         source
             .matches("// I AM NOT DONE")
             .next()
@@ -140,6 +141,12 @@ fn all_exercises_require_confirmation() {
                     path
                 )
             });
+=======
+        source.matches("// I AM NOT DONE").next().unwrap_or_else(|| panic!(
+            "There should be an `I AM NOT DONE` annotation in {:?}",
+            path
+        ));
+>>>>>>> f105bb5103061ab72e33edfea5100259b400bf3f
     }
 }
 
