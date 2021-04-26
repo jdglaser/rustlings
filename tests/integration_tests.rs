@@ -133,8 +133,11 @@ fn all_exercises_require_confirmation() {
         };
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 6b6dc9dd48ed0f97be02263ee45267af361fd029
+=======
+>>>>>>> 2fc62d1c7b0d5f0482a7fbf7d63c05ff5a04b225
         source
             .matches("// I AM NOT DONE")
             .next()
@@ -145,14 +148,20 @@ fn all_exercises_require_confirmation() {
                 )
             });
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 2fc62d1c7b0d5f0482a7fbf7d63c05ff5a04b225
 =======
         source.matches("// I AM NOT DONE").next().unwrap_or_else(|| panic!(
             "There should be an `I AM NOT DONE` annotation in {:?}",
             path
         ));
 >>>>>>> f105bb5103061ab72e33edfea5100259b400bf3f
+<<<<<<< HEAD
 =======
 >>>>>>> 6b6dc9dd48ed0f97be02263ee45267af361fd029
+=======
+>>>>>>> 2fc62d1c7b0d5f0482a7fbf7d63c05ff5a04b225
     }
 }
 
